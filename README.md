@@ -15,6 +15,9 @@ GUI Alerts
 
 ### Release History
 
+* v1.0.1 - `LESS/CSS` ~~`JS`~~ ~~`HTML`~~
+	* As the built-in faux italic cut off the descenders in alert messages, we changed the font style to a more native style.
+		[#130](https://github.com/WestpacCXTeam/GUI-source/issues/130)
 * v1.0.0 - Initial port
 
 **[⬆ back to top](#content)**
