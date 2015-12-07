@@ -1623,7 +1623,7 @@ a:hover {
     width: auto;
   }
 }
-/*!alerts v1.0.0 BOM*/
+/*!alerts v1.0.1 BOM*/
 /*
  * alerts mixins
  *
@@ -1799,7 +1799,6 @@ a:hover {
 }
 .alert-form .alert-form-msg {
   display: none;
-  font-style: italic;
   font-size: 13px;
 }
 .has-success.alert-form .alert-form-msg,
