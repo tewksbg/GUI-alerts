@@ -121,9 +121,7 @@ module.exports = function(grunt) {
 		var module = grunt.file.readJSON( 'module.json' );
 		var version = '1.0.0';
 		var sizeCSS = 0;
-		var sizeGrunticon1 = 0;
-		var sizeGrunticon2 = 0;
-		var sizeGrunticon3 = 0;
+		var sizeGrunticon = 0;
 		var sizeImg = 0;
 		var sizeJs = 0;
 
@@ -134,40 +132,35 @@ module.exports = function(grunt) {
 
 		Du('tests/WBC/assets/size/size.css', function(err, sizeCSS) {
 
-			Du('tests/WBC/assets/css/symbols.data.png.css', function(err, sizeGrunticon1) {
+			Du('tests/WBC/assets/css/symbols.data.svg.css', function(err, sizeGrunticon) {
 
-				Du('tests/WBC/assets/css/symbols.data.svg.css', function(err, sizeGrunticon2) {
+				Du('tests/WBC/assets/img/', function(err, sizeImg) {
 
-					Du('tests/WBC/assets/css/symbols.fallback.css', function(err, sizeGrunticon3) {
+					Du('tests/WBC/assets/size/size.js', function(err, sizeJs) {
 
-						Du('tests/WBC/assets/img/', function(err, sizeImg) {
+						Du('tests/WBC/assets/size/coreSize.css', function(err, sizeCore) {
+							sizeCSS = sizeCSS || 0;
+							sizeGrunticon = sizeGrunticon || 0;
+							sizeImg = sizeImg || 0;
+							sizeJs = sizeJs || 0;
 
-							Du('tests/WBC/assets/size/size.js', function(err, sizeJs) {
-								sizeCSS = sizeCSS || 0;
-								sizeGrunticon1 = sizeGrunticon1 || 0;
-								sizeGrunticon2 = sizeGrunticon2 || 0;
-								sizeGrunticon3 = sizeGrunticon3 || 0;
-								sizeImg = sizeImg || 0;
-								sizeJs = sizeJs || 0;
+							var size = Math.ceil( //size of all important elements
+								( ( sizeCSS + sizeGrunticon + sizeImg + sizeJs ) - sizeCore ) / 1000
+							);
 
-								var size = Math.ceil( //size of all important elements
-									( sizeCSS + sizeGrunticon1 + sizeGrunticon2 + sizeGrunticon3 + sizeImg + sizeJs ) / 1000
-								);
+							if( size <= 0 ) {
+								size = 1;
+							}
 
-								if( size <= 0 ) {
-									size = 1;
-								}
+							var module = grunt.file.readJSON( 'module.json' );
 
-								var module = grunt.file.readJSON( 'module.json' );
+							module.versions[version]['size'] = parseInt( size );
+							grunt.file.write( 'module.json', JSON.stringify( module, null, "\t" ) );
 
-								module.versions[version]['size'] = parseInt( size );
-								grunt.file.write( 'module.json', JSON.stringify( module, null, "\t" ) );
-
-								grunt.log.ok( size + 'kb size successfully calculated' );
+							grunt.log.ok( size + 'kb size successfully calculated' );
 
 
-								calDone(true);
-							});
+							calDone(true);
 						});
 					});
 				});
@@ -238,6 +231,26 @@ module.exports = function(grunt) {
 				dest: 'tests/' + brand + '/assets/less/gui.less',
 			};
 
+			if( module.core === true ) { //if this is a core module
+				if( module.ID === '_colors' ) {
+					var srcFiles = [
+						'less/module-mixins.less',
+						'_core/less/core-after.less',
+					];
+				}
+			}
+			else { //all other modules
+				var srcFiles = [
+					'_core/less/core.less',
+					'_core/less/core-after.less',
+				];
+			}
+
+			concat[ 'coreSize' + brand ] = { //coreSize
+				src: srcFiles,
+				dest: 'tests/' + brand + '/assets/less/coreSize.less',
+			};
+
 			concat[ 'HTML' + brand ] = { //html
 				src: [
 					'html/header.html',
@@ -249,7 +262,7 @@ module.exports = function(grunt) {
 
 
 			//////////////////////////////////////| ADD VERSIONING TO FILES
-			replace[ 'Replace' + brand ] = {
+			replace[ 'Replace' + brand ] = { //brand all files
 				src: [
 					'tests/' + brand + '/assets/js/*.js',
 					'tests/' + brand + '/assets/less/*.less',
@@ -271,12 +284,32 @@ module.exports = function(grunt) {
 				}],
 			};
 
-			replace[ 'ReplaceTest' + brand ] = {
+			replace[ 'ReplaceTest' + brand ] = { //brand test files
 				src: [
 					'less/test.less',
 				],
 				overwrite: false,
 				dest: 'tests/' + brand + '/assets/less/test.less',
+				replacements: [{
+					from: '[Module-Version-Brand]',
+					to: moduleName + ' v' + version + ' ' + brand,
+				}, {
+					from: '[Module-Version]',
+					to: moduleName + ' v' + version,
+				}, {
+					from: '[Brand]',
+					to: brand,
+				}, {
+					from: '[Debug]',
+					to: 'true',
+				}],
+			};
+
+			replace[ 'ReplaceSize' + brand ] = { //brand size files
+				src: [
+					'tests/' + brand + '/assets/less/coreSize.less'
+				],
+				overwrite: true,
 				replacements: [{
 					from: '[Module-Version-Brand]',
 					to: moduleName + ' v' + version + ' ' + brand,
@@ -308,7 +341,7 @@ module.exports = function(grunt) {
 				dest: 'tests/' + brand + '/assets/css/gui.css',
 			};
 
-			less[ 'LessSize' + brand ] = {
+			less[ 'LessSize' + brand ] = { //minified css for size calculation
 				options: {
 					cleancss: true,
 					compress: true,
@@ -320,6 +353,20 @@ module.exports = function(grunt) {
 					'tests/' + brand + '/assets/less/gui.less',
 				],
 				dest: 'tests/' + brand + '/assets/size/size.css',
+			};
+
+			less[ 'CoreSize' + brand ] = { //minified core css for size calculation
+				options: {
+					cleancss: true,
+					compress: true,
+					ieCompat: true,
+					report: 'min',
+					plugins : [ new (require('less-plugin-autoprefix'))({ browsers: [ 'last 2 versions', 'ie 8', 'ie 9', 'ie 10' ] }) ],
+				},
+				src: [
+					'tests/' + brand + '/assets/less/coreSize.less',
+				],
+				dest: 'tests/' + brand + '/assets/size/coreSize.css',
 			};
 
 			less[ 'LessTest' + brand ] = {
@@ -497,6 +544,14 @@ module.exports = function(grunt) {
 
 
 		//----------------------------------------------------------------------------------------------------------------------------------------------------------
+		// Cleaning test folder
+		//----------------------------------------------------------------------------------------------------------------------------------------------------------
+		clean: {
+			test: ['tests'],
+		},
+
+
+		//----------------------------------------------------------------------------------------------------------------------------------------------------------
 		// Banner
 		//----------------------------------------------------------------------------------------------------------------------------------------------------------
 		font: {
@@ -571,6 +626,7 @@ module.exports = function(grunt) {
 	//------------------------------------------------------------------------------------------------------------------------------------------------------------
 	grunt.registerTask('_build', [
 		// 'lintspaces',
+		'clean',
 		'buildVersions',
 		'wakeup',
 	]);
