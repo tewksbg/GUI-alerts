@@ -1028,7 +1028,7 @@
     padding-left: 24px;
   }
 }
-/*! _text-styling v1.0.2 */
+/*! _text-styling v1.0.3 */
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 /**
 	 * 1. Set default font family to sans-serif.
@@ -1378,7 +1378,7 @@ th {
 h1 {
   font-size: 30px;
   color: #004833;
-  font-family: "dragonbold", "Helvetica Neue", "Roboto", Arial, sans-serif;
+  font-family: "dragonbold", -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
   margin-top: 18px;
   margin-bottom: 18px;
   font-weight: normal;
@@ -1399,7 +1399,7 @@ h1.body-font {
 h2 {
   font-size: 24px;
   color: #004833;
-  font-family: "dragonbold", "Helvetica Neue", "Roboto", Arial, sans-serif;
+  font-family: "dragonbold", -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
   margin-top: 18px;
   margin-bottom: 12px;
   font-weight: normal;
@@ -1420,7 +1420,7 @@ h2.body-font {
 h3 {
   font-size: 18px;
   color: #004833;
-  font-family: "dragonbold", "Helvetica Neue", "Roboto", Arial, sans-serif;
+  font-family: "dragonbold", -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
   margin-top: 18px;
   margin-bottom: 12px;
   font-weight: normal;
@@ -1441,7 +1441,7 @@ h3.body-font {
 h4 {
   font-size: 16px;
   color: #004833;
-  font-family: "Helvetica Neue", "Roboto", Arial, sans-serif;
+  font-family: -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
   margin-top: 18px;
   margin-bottom: 12px;
   font-weight: 700;
@@ -1462,7 +1462,7 @@ h4.body-font {
 h5 {
   font-size: 16px;
   color: #004833;
-  font-family: "Helvetica Neue", "Roboto", Arial, sans-serif;
+  font-family: -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
   margin-top: 12px;
   margin-bottom: 6px;
   font-weight: 700;
@@ -1477,7 +1477,7 @@ h5.body-font {
 h6 {
   font-size: 14px;
   color: #004833;
-  font-family: "Helvetica Neue", "Roboto", Arial, sans-serif;
+  font-family: -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
   margin-top: 12px;
   margin-bottom: 0px;
   font-weight: 700;
@@ -1504,7 +1504,7 @@ body {
   line-height: 1.428571429;
   color: #004833;
   background-color: #f1f1ef;
-  font-family: "Helvetica Neue", "Roboto", Arial, sans-serif;
+  font-family: -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
 }
 abbr[title] {
   cursor: help;
@@ -1616,7 +1616,7 @@ a:hover {
     width: auto;
   }
 }
-/*!alerts v1.0.2 STG*/
+/*!alerts v1.0.3 STG*/
 /*
  * alerts mixins
  *
@@ -1648,6 +1648,19 @@ a:hover {
   z-index: 1;
   max-height: 500px;
   opacity: 1;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #0074c4;
+  border-color: #80bae2;
+  background-color: #f2f8fc;
+}
+.alert .alert-close svg,
+.alert .alert-close .icons-background {
+  fill: #0074c4;
 }
 .alert > p,
 .alert > ul {
@@ -1656,7 +1669,7 @@ a:hover {
 .alert > p + p {
   margin-top: 5px;
 }
-.alert .alert-close {
+.alert-close {
   position: absolute;
   top: 5px;
   right: 5px;
@@ -1677,23 +1690,34 @@ a:hover {
   text-indent: -9999em;
   z-index: 2;
 }
-.no-js .alert .alert-close {
+.no-js .alert-close {
   display: none;
 }
-.alert .alert-close svg {
+.alert-close svg {
   width: 16px;
   height: 16px;
 }
-.alert .alert-close:focus {
+.alert-close:focus {
   outline: none;
 }
-.is-keyboarduser .alert .alert-close:focus {
+.is-keyboarduser .alert-close:focus {
   outline: 2px dotted #000;
   outline-offset: 0.5rem;
 }
-.alert .alert-close:hover {
+.alert-close:hover {
   outline: none;
   opacity: 0.5;
+}
+.alert .alert-icon {
+  float: left;
+  margin-right: 12px;
+  -webkit-align-self: flex-start;
+      -ms-flex-item-align: start;
+          align-self: flex-start;
+}
+.alert .alert-icon svg,
+.alert .alert-icon .icons-background {
+  fill: #0074c4;
 }
 .js .alert {
   transition: all 0.15s ease;
@@ -1712,7 +1736,9 @@ a:hover {
   background-color: #f2f9f2;
 }
 .alert.alert-success .alert-close svg,
-.alert.alert-success .alert-close .icons-background {
+.alert.alert-success .alert-icon svg,
+.alert.alert-success .alert-close .icons-background,
+.alert.alert-success .alert-icon .icons-background {
   fill: #008000;
 }
 .alert.alert-info {
@@ -1721,7 +1747,9 @@ a:hover {
   background-color: #f2f8fc;
 }
 .alert.alert-info .alert-close svg,
-.alert.alert-info .alert-close .icons-background {
+.alert.alert-info .alert-icon svg,
+.alert.alert-info .alert-close .icons-background,
+.alert.alert-info .alert-icon .icons-background {
   fill: #0074c4;
 }
 .alert.alert-warning {
@@ -1730,7 +1758,9 @@ a:hover {
   background-color: #fcf5f2;
 }
 .alert.alert-warning .alert-close svg,
-.alert.alert-warning .alert-close .icons-background {
+.alert.alert-warning .alert-icon svg,
+.alert.alert-warning .alert-close .icons-background,
+.alert.alert-warning .alert-icon .icons-background {
   fill: #c53b00;
 }
 .alert.alert-danger {
@@ -1739,7 +1769,9 @@ a:hover {
   background-color: #fcf2f2;
 }
 .alert.alert-danger .alert-close svg,
-.alert.alert-danger .alert-close .icons-background {
+.alert.alert-danger .alert-icon svg,
+.alert.alert-danger .alert-close .icons-background,
+.alert.alert-danger .alert-icon .icons-background {
   fill: #c40000;
 }
 .alert.alert-system {
@@ -1748,7 +1780,9 @@ a:hover {
   background-color: yellow;
 }
 .alert.alert-system .alert-close svg,
-.alert.alert-system .alert-close .icons-background {
+.alert.alert-system .alert-icon svg,
+.alert.alert-system .alert-close .icons-background,
+.alert.alert-system .alert-icon .icons-background {
   fill: #000;
 }
 .label.label-success {

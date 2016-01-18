@@ -58,6 +58,18 @@
 		z-index: 1;
 		max-height: 500px;
 		opacity: 1;
+		display: flex;
+		align-items: center;
+		color: @color-Info;
+		border-color: @color-Info-50;
+		background-color: @color-Info-5;
+
+		.alert-close {
+			svg,
+			.icons-background {
+				fill: @color-Info;
+			}
+		}
 
 		> p,
 		> ul {
@@ -68,7 +80,7 @@
 			margin-top: 5px;
 		}
 
-		.alert-close {
+		&-close {
 			position: absolute;
 			top: 5px;
 			right: 5px;
@@ -109,6 +121,17 @@
 
 		}
 
+		.alert-icon {
+			float: left;
+			margin-right: 12px;
+			align-self: flex-start;
+
+			svg,
+			.icons-background {
+				fill: @color-Info;
+			}
+		}
+
 		.js & {
 			transition: all 0.15s ease;
 			max-height: 500px;
@@ -128,7 +151,8 @@
 			border-color: @color-Success-50;
 			background-color: @color-Success-5;
 
-			.alert-close {
+			.alert-close,
+			.alert-icon {
 				svg,
 				.icons-background {
 					fill: @color-Success;
@@ -141,7 +165,8 @@
 			border-color: @color-Info-50;
 			background-color: @color-Info-5;
 
-			.alert-close {
+			.alert-close,
+			.alert-icon {
 				svg,
 				.icons-background {
 					fill: @color-Info;
@@ -154,7 +179,8 @@
 			border-color: @color-Warning-50;
 			background-color: @color-Warning-5;
 
-			.alert-close {
+			.alert-close,
+			.alert-icon {
 				svg,
 				.icons-background {
 					fill: @color-Warning;
@@ -167,7 +193,8 @@
 			border-color: @color-Danger-50;
 			background-color: @color-Danger-5;
 
-			.alert-close {
+			.alert-close,
+			.alert-icon {
 				svg,
 				.icons-background {
 					fill: @color-Danger;
@@ -180,7 +207,8 @@
 			border-color: yellow;
 			background-color: yellow;
 
-			.alert-close {
+			.alert-close,
+			.alert-icon {
 				svg,
 				.icons-background {
 					fill: #000;
