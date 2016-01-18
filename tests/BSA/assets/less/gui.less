@@ -381,7 +381,7 @@
 //////////////////////////////////////| GRID
 ._grid(BSA);
 
-/*! _text-styling v1.0.2 */
+/*! _text-styling v1.0.3 */
 
 
 //////////////////////////////////////| TEXT STYLING MIXIN
@@ -570,9 +570,6 @@
 ._text-styling-headings( @brand ) {
 
 	.getBrand() when (@brand = BOM) { /////////////////////////////////////////////////////// BOM
-		@fontfamily: "Helvetica Neue", "Roboto", Arial, sans-serif;
-		@brand-fontfamily: "stag", "Roboto", Arial, sans-serif;
-
 		.h1,
 		h1 {
 			font-size: 30px;
@@ -681,9 +678,6 @@
 		}
 	}
 	.getBrand() when (@brand = BSA) { /////////////////////////////////////////////////////// BSA
-		@fontfamily: "Helvetica Neue", "Roboto", Arial, sans-serif;
-		@brand-fontfamily: "Helvetica Neue", "Roboto", Arial, sans-serif;
-
 		.h1,
 		h1 {
 			font-size: 30px;
@@ -768,9 +762,6 @@
 		}
 	}
 	.getBrand() when (@brand = STG) { /////////////////////////////////////////////////////// STG
-		@fontfamily: "Helvetica Neue", "Roboto", Arial, sans-serif;
-		@brand-fontfamily: "dragonbold", "Helvetica Neue", "Roboto", Arial, sans-serif;
-
 		.h1,
 		h1 {
 			font-size: 30px;
@@ -879,9 +870,6 @@
 		}
 	}
 	.getBrand() when (@brand = WBC) { /////////////////////////////////////////////////////// WBC
-		@fontfamily: "Helvetica Neue", "Roboto", Arial, sans-serif;
-		@brand-fontfamily: "Times New Roman", "Times", "Helvetica Neue", "Roboto", Arial, sans-serif;
-
 		.h1,
 		h1 {
 			font-size: 30px;
@@ -1424,7 +1412,7 @@
 
 //////////////////////////////////////| TEXT STYLING
 ._text-styling(BSA);
-/*!alerts v1.0.2 BSA*/
+/*!alerts v1.0.3 BSA*/
 /*
  * alerts mixins
  *
@@ -1484,6 +1472,18 @@
 		z-index: 1;
 		max-height: 500px;
 		opacity: 1;
+		display: flex;
+		align-items: center;
+		color: @color-Info;
+		border-color: @color-Info-50;
+		background-color: @color-Info-5;
+
+		.alert-close {
+			svg,
+			.icons-background {
+				fill: @color-Info;
+			}
+		}
 
 		> p,
 		> ul {
@@ -1494,7 +1494,7 @@
 			margin-top: 5px;
 		}
 
-		.alert-close {
+		&-close {
 			position: absolute;
 			top: 5px;
 			right: 5px;
@@ -1535,6 +1535,17 @@
 
 		}
 
+		.alert-icon {
+			float: left;
+			margin-right: 12px;
+			align-self: flex-start;
+
+			svg,
+			.icons-background {
+				fill: @color-Info;
+			}
+		}
+
 		.js & {
 			transition: all 0.15s ease;
 			max-height: 500px;
@@ -1554,7 +1565,8 @@
 			border-color: @color-Success-50;
 			background-color: @color-Success-5;
 
-			.alert-close {
+			.alert-close,
+			.alert-icon {
 				svg,
 				.icons-background {
 					fill: @color-Success;
@@ -1567,7 +1579,8 @@
 			border-color: @color-Info-50;
 			background-color: @color-Info-5;
 
-			.alert-close {
+			.alert-close,
+			.alert-icon {
 				svg,
 				.icons-background {
 					fill: @color-Info;
@@ -1580,7 +1593,8 @@
 			border-color: @color-Warning-50;
 			background-color: @color-Warning-5;
 
-			.alert-close {
+			.alert-close,
+			.alert-icon {
 				svg,
 				.icons-background {
 					fill: @color-Warning;
@@ -1593,7 +1607,8 @@
 			border-color: @color-Danger-50;
 			background-color: @color-Danger-5;
 
-			.alert-close {
+			.alert-close,
+			.alert-icon {
 				svg,
 				.icons-background {
 					fill: @color-Danger;
@@ -1606,7 +1621,8 @@
 			border-color: yellow;
 			background-color: yellow;
 
-			.alert-close {
+			.alert-close,
+			.alert-icon {
 				svg,
 				.icons-background {
 					fill: #000;
