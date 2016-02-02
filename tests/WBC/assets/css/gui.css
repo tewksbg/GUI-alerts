@@ -1610,14 +1610,26 @@ a:hover {
 .text-success {
   color: #008000;
 }
+.text-success .icons-background {
+  fill: #008000;
+}
 .text-info {
   color: #0074c4;
+}
+.text-info .icons-background {
+  fill: #0074c4;
 }
 .text-warning {
   color: #c53b00;
 }
+.text-warning .icons-background {
+  fill: #c53b00;
+}
 .text-danger {
   color: #c40000;
+}
+.text-danger .icons-background {
+  fill: #c40000;
 }
 .alert {
   position: relative;
