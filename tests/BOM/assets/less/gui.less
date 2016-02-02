@@ -240,7 +240,7 @@
 //////////////////////////////////////| COLORS
 ._colors(BOM);
 
-/*! _fonts v1.0.1 */
+/*! _fonts v1.0.2 */
 
 
 //////////////////////////////////////| FONTS MIXIN
@@ -303,23 +303,23 @@
 }
 
 
-//////////////////////////////////////| BREAKPOINTS
+//////////////////////////////////////| FONT FAMILY
 ._fonts-family( @brand ) {
 	.getBrand() when (@brand = BOM) {
-		@fontfamily: -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
-		@brand-fontfamily: "stag", -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
+		@fontfamily: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+		@brand-fontfamily: "stag", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 	}
 	.getBrand() when (@brand = BSA) {
-		@fontfamily: -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
-		@brand-fontfamily: -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
+		@fontfamily: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+		@brand-fontfamily: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 	}
 	.getBrand() when (@brand = STG) {
-		@fontfamily: -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
-		@brand-fontfamily: "dragonbold", -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
+		@fontfamily: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+		@brand-fontfamily: "dragonbold", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 	}
 	.getBrand() when (@brand = WBC) {
-		@fontfamily: -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
-		@brand-fontfamily: "Times New Roman", "Times", -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
+		@fontfamily: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+		@brand-fontfamily: "Times New Roman", "Times", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 	}
 	.getBrand();
 }
@@ -1412,7 +1412,7 @@
 
 //////////////////////////////////////| TEXT STYLING
 ._text-styling(BOM);
-/*!alerts v1.0.3 BOM*/
+/*!alerts v1.0.4 BOM*/
 /*
  * alerts mixins
  *
@@ -1446,18 +1446,34 @@
 	//////////////////////////////////////| TEXT COLORS
 	.text-success {
 		color: @color-Success;
+
+		.icons-background {
+			fill: @color-Success;
+		}
 	}
 
 	.text-info {
 		color: @color-Info;
+
+		.icons-background {
+			fill: @color-Info;
+		}
 	}
 
 	.text-warning {
 		color: @color-Warning;
+
+		.icons-background {
+			fill: @color-Warning;
+		}
 	}
 
 	.text-danger {
 		color: @color-Danger;
+
+		.icons-background {
+			fill: @color-Danger;
+		}
 	}
 
 
@@ -1470,7 +1486,6 @@
 		border-bottom: 1px solid @color-Border;
 		overflow: hidden;
 		z-index: 1;
-		max-height: 500px;
 		opacity: 1;
 		display: flex;
 		align-items: center;
@@ -1540,6 +1555,18 @@
 			margin-right: 12px;
 			align-self: flex-start;
 
+			&.icon-size-sm {
+				min-width: 16px;
+			}
+
+			&.icon-size-md {
+				min-width: 32px;
+			}
+
+			&.icon-size-lg {
+				min-width: 64px;
+			}
+
 			svg,
 			.icons-background {
 				fill: @color-Info;
@@ -1549,6 +1576,11 @@
 		.js & {
 			transition: all 0.15s ease;
 			max-height: 500px;
+
+			.alert-body {
+				max-height: 470px;
+				overflow: auto;
+			}
 		}
 
 		&.is-closed {
