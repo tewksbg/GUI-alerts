@@ -1412,7 +1412,7 @@
 
 //////////////////////////////////////| TEXT STYLING
 ._text-styling(BOM);
-/*!alerts v1.0.3 BOM*/
+/*!alerts v1.0.4 BOM*/
 /*
  * alerts mixins
  *
@@ -1470,7 +1470,6 @@
 		border-bottom: 1px solid @color-Border;
 		overflow: hidden;
 		z-index: 1;
-		max-height: 500px;
 		opacity: 1;
 		display: flex;
 		align-items: center;
@@ -1539,6 +1538,18 @@
 			float: left;
 			margin-right: 12px;
 			align-self: flex-start;
+
+			&.icon-size-sm {
+				min-width: 16px;
+			}
+
+			&.icon-size-md {
+				min-width: 32px;
+			}
+
+			&.icon-size-lg {
+				min-width: 64px;
+			}
 
 			svg,
 			.icons-background {

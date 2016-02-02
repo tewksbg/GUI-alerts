@@ -1597,7 +1597,7 @@ a:hover {
     width: auto;
   }
 }
-/*!alerts v1.0.3 WBC*/
+/*!alerts v1.0.4 WBC*/
 /*
  * alerts mixins
  *
@@ -1627,7 +1627,6 @@ a:hover {
   border-bottom: 1px solid #d7d2cb;
   overflow: hidden;
   z-index: 1;
-  max-height: 500px;
   opacity: 1;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1695,6 +1694,15 @@ a:hover {
   -webkit-align-self: flex-start;
       -ms-flex-item-align: start;
           align-self: flex-start;
+}
+.alert .alert-icon.icon-size-sm {
+  min-width: 16px;
+}
+.alert .alert-icon.icon-size-md {
+  min-width: 32px;
+}
+.alert .alert-icon.icon-size-lg {
+  min-width: 64px;
 }
 .alert .alert-icon svg,
 .alert .alert-icon .icons-background {

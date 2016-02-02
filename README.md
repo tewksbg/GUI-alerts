@@ -15,9 +15,12 @@ GUI Alerts
 
 ### Release History
 
+* v1.0.4 - `LESS/CSS` ~~`HTML`~~ ~~`JS`~~
+	* TODO
+		[#194](https://github.com/WestpacCXTeam/GUI-source/issues/194)
 * v1.0.3 - `HTML` `LESS/CSS` ~~`JS`~~
 	* You know the feeling when you're trying to buy a beer at the corner pub on a Friday afternoon after you've just finished a sprint that was particularly
-		difficult and the alert message says: "No more funds" and you know you left the other card at home and never got around to setup cardless cash?
+		difficult and the alert message says: "No more funds" and you know you left the other card at home and never got around to setting up cardless cash?
 		Long story short: You now get to make that alert message a bit easier on the eyes by adding icons inside of it to help make Friday afternoons fun again.
 		[#177](https://github.com/WestpacCXTeam/GUI-source/issues/177)
 * v1.0.2 - `JS` `HTML` ~~`LESS/CSS`~~
