@@ -56,7 +56,6 @@
 		border-bottom: 1px solid @color-Border;
 		overflow: hidden;
 		z-index: 1;
-		max-height: 500px;
 		opacity: 1;
 		display: flex;
 		align-items: center;
@@ -147,6 +146,11 @@
 		.js & {
 			transition: all 0.15s ease;
 			max-height: 500px;
+
+			.alert-body {
+				max-height: 470px;
+				overflow: auto;
+			}
 		}
 
 		&.is-closed {

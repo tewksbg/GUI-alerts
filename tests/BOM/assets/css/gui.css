@@ -1738,6 +1738,10 @@ a:hover {
   transition: all 0.15s ease;
   max-height: 500px;
 }
+.js .alert .alert-body {
+  max-height: 470px;
+  overflow: auto;
+}
 .alert.is-closed {
   max-height: 0;
   opacity: 0;
