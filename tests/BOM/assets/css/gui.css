@@ -3,7 +3,7 @@
   content: 'Dominik Wilkowski, Justin Spencer, Kate T MacDonald';
   color: #BADA55;
 }
-/*! _fonts v1.0.1 */
+/*! _fonts v1.0.2 */
 @font-face {
   font-family: 'stag';
   src: url('../font/Stag-Light.eot');
@@ -19,10 +19,10 @@
   font-style: normal;
 }
 .body-font {
-  font-family: -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 }
 .brand-font {
-  font-family: "stag", -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
+  font-family: "stag", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 }
 /*! _grid v1.0.0 */
 .clearfix:before,
@@ -1385,7 +1385,7 @@ th {
 h1 {
   font-size: 30px;
   color: #7e7357;
-  font-family: "stag", -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
+  font-family: "stag", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   margin-top: 18px;
   margin-bottom: 18px;
   font-weight: 500;
@@ -1406,7 +1406,7 @@ h1.body-font {
 h2 {
   font-size: 24px;
   color: #7e7357;
-  font-family: "stag", -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
+  font-family: "stag", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   margin-top: 18px;
   margin-bottom: 12px;
   font-weight: 500;
@@ -1427,7 +1427,7 @@ h2.body-font {
 h3 {
   font-size: 18px;
   color: #7e7357;
-  font-family: "stag", -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
+  font-family: "stag", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   margin-top: 18px;
   margin-bottom: 12px;
   font-weight: 500;
@@ -1448,7 +1448,7 @@ h3.body-font {
 h4 {
   font-size: 16px;
   color: #4d5157;
-  font-family: "stag", -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
+  font-family: "stag", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   margin-top: 18px;
   margin-bottom: 12px;
   font-weight: 500;
@@ -1469,7 +1469,7 @@ h4.body-font {
 h5 {
   font-size: 16px;
   color: #4d5157;
-  font-family: -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   margin-top: 12px;
   margin-bottom: 6px;
   font-weight: 700;
@@ -1484,7 +1484,7 @@ h5.body-font {
 h6 {
   font-size: 14px;
   color: #4d5157;
-  font-family: -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   margin-top: 12px;
   margin-bottom: 0px;
   font-weight: 700;
@@ -1511,7 +1511,7 @@ body {
   line-height: 1.428571429;
   color: #20262d;
   background-color: #f0f1f2;
-  font-family: -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 }
 abbr[title] {
   cursor: help;
@@ -1623,7 +1623,7 @@ a:hover {
     width: auto;
   }
 }
-/*!alerts v1.0.3 BOM*/
+/*!alerts v1.0.4 BOM*/
 /*
  * alerts mixins
  *
@@ -1636,14 +1636,26 @@ a:hover {
 .text-success {
   color: #008000;
 }
+.text-success .icons-background {
+  fill: #008000;
+}
 .text-info {
   color: #0074c4;
+}
+.text-info .icons-background {
+  fill: #0074c4;
 }
 .text-warning {
   color: #c53b00;
 }
+.text-warning .icons-background {
+  fill: #c53b00;
+}
 .text-danger {
   color: #c40000;
+}
+.text-danger .icons-background {
+  fill: #c40000;
 }
 .alert {
   position: relative;
@@ -1653,7 +1665,6 @@ a:hover {
   border-bottom: 1px solid #d2d5d8;
   overflow: hidden;
   z-index: 1;
-  max-height: 500px;
   opacity: 1;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1722,6 +1733,15 @@ a:hover {
       -ms-flex-item-align: start;
           align-self: flex-start;
 }
+.alert .alert-icon.icon-size-sm {
+  min-width: 16px;
+}
+.alert .alert-icon.icon-size-md {
+  min-width: 32px;
+}
+.alert .alert-icon.icon-size-lg {
+  min-width: 64px;
+}
 .alert .alert-icon svg,
 .alert .alert-icon .icons-background {
   fill: #0074c4;
@@ -1729,6 +1749,10 @@ a:hover {
 .js .alert {
   transition: all 0.15s ease;
   max-height: 500px;
+}
+.js .alert .alert-body {
+  max-height: 470px;
+  overflow: auto;
 }
 .alert.is-closed {
   max-height: 0;
