@@ -47,6 +47,29 @@ function checksum(str, algorithm, encoding) {
 
 
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------
+// Seetings
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------
+var SETTINGS = function() {
+	return {
+		'colors': {
+			'BOM': {
+				'Color-Text': '#20262d',
+			},
+			'BSA': {
+				'Color-Text': '#333',
+			},
+			'STG': {
+				'Color-Text': '#004833',
+			},
+			'WBC': {
+				'Color-Text': '#2d373e',
+			},
+		},
+	};
+};
+
+
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------
 // Grunt module
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------
 module.exports = function(grunt) {
@@ -101,7 +124,7 @@ module.exports = function(grunt) {
 
 
 	//------------------------------------------------------------------------------------------------------------------------------------------------------------
-	// Custom grunt task to build all files
+	// Custom grunt task to calculate checksum of all source files
 	//------------------------------------------------------------------------------------------------------------------------------------------------------------
 	grunt.registerTask('createChecksum', 'Add a checksum of all folders to the module.json.', function() {
 		var sumDone = this.async();
@@ -195,7 +218,7 @@ module.exports = function(grunt) {
 
 
 	//------------------------------------------------------------------------------------------------------------------------------------------------------------
-	// Custom grunt task to build all files
+	// Custom grunt task to build all files in each brand
 	//------------------------------------------------------------------------------------------------------------------------------------------------------------
 	grunt.registerTask('buildVersions', 'Build this module.', function() {
 
@@ -443,11 +466,24 @@ module.exports = function(grunt) {
 			};
 
 
-			//////////////////////////////////////| HANDLE SVGS
+			//////////////////////////////////////| BRAND SVGS
+			replace[ 'ReplaceSVG' + brand ] = {
+				src: [
+					'_assets/_svgs/*.svg',
+				],
+				dest: 'tests/' + brand + '/assets/svg/',
+				replacements: [{
+					from: '[Color-Text]',
+					to: SETTINGS().colors[brand]['Color-Text'],
+				}],
+			};
+
+
+			//////////////////////////////////////| COMPILE SVGS
 			grunticon[ 'SVG' + brand ] = {
 				files: [{
 					expand: true,
-					cwd: '_assets/' + brand + '/svg',
+					cwd: 'tests/' + brand + '/assets/svg',
 					src: '*.svg',
 					dest: 'tests/' + brand + '/assets/css',
 				}],
@@ -463,6 +499,8 @@ module.exports = function(grunt) {
 				},
 			};
 
+
+			//////////////////////////////////////| COPY FALLBACK SVGS
 			copy[ 'SVG' + brand ] = {
 				expand: true,
 				cwd: 'tests/' + brand + '/assets/css/png',
@@ -575,6 +613,37 @@ module.exports = function(grunt) {
 
 
 		//----------------------------------------------------------------------------------------------------------------------------------------------------------
+		// Copy symbole files
+		//----------------------------------------------------------------------------------------------------------------------------------------------------------
+		copy: {
+			'SVGfilesBOM': {
+				expand: true,
+				cwd: '_assets/BOM/svg',
+				src: '*.svg',
+				dest: 'tests/BOM/assets/svg',
+			},
+			'SVGfilesBSA': {
+				expand: true,
+				cwd: '_assets/BSA/svg',
+				src: '*.svg',
+				dest: 'tests/BSA/assets/svg',
+			},
+			'SVGfilesSTG': {
+				expand: true,
+				cwd: '_assets/STG/svg',
+				src: '*.svg',
+				dest: 'tests/STG/assets/svg',
+			},
+			'SVGfilesWBC': {
+				expand: true,
+				cwd: '_assets/WBC/svg',
+				src: '*.svg',
+				dest: 'tests/WBC/assets/svg',
+			},
+		},
+
+
+		//----------------------------------------------------------------------------------------------------------------------------------------------------------
 		// Banner
 		//----------------------------------------------------------------------------------------------------------------------------------------------------------
 		font: {
@@ -650,12 +719,14 @@ module.exports = function(grunt) {
 	grunt.registerTask('_build', [
 		// 'lintspaces',
 		'clean',
+		'copy',
 		'buildVersions',
 		'wakeup',
 	]);
 
 	grunt.registerTask('_ubergrunt', [
 		'clean',
+		'copy',
 		'buildVersions',
 	]);
 
