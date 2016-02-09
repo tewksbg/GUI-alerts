@@ -2,16 +2,16 @@
 
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------
 //
-//                                                             ██████╗  ██╗   ██╗ ██╗
-//                                                            ██╔════╝  ██║   ██║ ██║
-//                                                            ██║  ███╗ ██║   ██║ ██║
-//                                                            ██║   ██║ ██║   ██║ ██║
-//                                                            ╚██████╔╝ ╚██████╔╝ ██║
-//                                                             ╚═════╝   ╚═════╝  ╚═╝
+//                                    ██████╗  ██╗   ██╗ ██╗     ███╗   ███╗  ██████╗  ██████╗  ██╗   ██╗ ██╗      ███████╗
+//                                   ██╔════╝  ██║   ██║ ██║     ████╗ ████║ ██╔═══██╗ ██╔══██╗ ██║   ██║ ██║      ██╔════╝
+//                                   ██║  ███╗ ██║   ██║ ██║     ██╔████╔██║ ██║   ██║ ██║  ██║ ██║   ██║ ██║      █████╗
+//                                   ██║   ██║ ██║   ██║ ██║     ██║╚██╔╝██║ ██║   ██║ ██║  ██║ ██║   ██║ ██║      ██╔══╝
+//                                   ╚██████╔╝ ╚██████╔╝ ██║     ██║ ╚═╝ ██║ ╚██████╔╝ ██████╔╝ ╚██████╔╝ ███████╗ ███████╗
+//                                    ╚═════╝   ╚═════╝  ╚═╝     ╚═╝     ╚═╝  ╚═════╝  ╚═════╝   ╚═════╝  ╚══════╝ ╚══════╝
 //                                                                       Created by Westpac Design Delivery Team
-// @desc     GUI source running each module
+// @desc     GUI source compiling a module
 // @author   Dominik Wilkowski
-// @website  https://github.com/WestpacCXTeam/GUI-source
+// @website  https://github.com/WestpacCXTeam/
 // @issues   https://github.com/WestpacCXTeam/GUI-source/issues
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -54,21 +54,44 @@ module.exports = function(grunt) {
 	//------------------------------------------------------------------------------------------------------------------------------------------------------------
 	// Dependencies
 	//------------------------------------------------------------------------------------------------------------------------------------------------------------
-	grunt.loadNpmTasks('grunt-contrib-imagemin');
-	grunt.loadNpmTasks('grunt-contrib-connect');
-	grunt.loadNpmTasks('grunt-contrib-uglify');
-	grunt.loadNpmTasks('grunt-contrib-concat');
-	grunt.loadNpmTasks('grunt-contrib-watch');
-	grunt.loadNpmTasks('grunt-contrib-clean');
-	grunt.loadNpmTasks('grunt-contrib-copy');
-	grunt.loadNpmTasks('grunt-contrib-less');
-	grunt.loadNpmTasks('grunt-text-replace');
-	grunt.loadNpmTasks('grunt-lintspaces');
-	grunt.loadNpmTasks('grunt-grunticon');
-	grunt.loadNpmTasks('grunt-prompt');
-	grunt.loadNpmTasks('grunt-wakeup');
-	grunt.loadNpmTasks('grunt-font');
-	require('time-grunt')(grunt);
+	try { //see first if there is a node_modules folder in the parent before complaining about nothing being there
+		Fs.statSync('../node_modules/grunt-contrib-less'); //I guess less is a good test no?
+
+		require('../node_modules/grunt-recursively-load-tasks')(grunt); //recursively load dependencies(this way we don't have to install them in each module)
+
+		grunt.recursivelyLoadTasks('grunt-contrib-imagemin', '../node_modules');
+		grunt.recursivelyLoadTasks('grunt-contrib-connect', '../node_modules');
+		grunt.recursivelyLoadTasks('grunt-contrib-uglify', '../node_modules');
+		grunt.recursivelyLoadTasks('grunt-contrib-concat', '../node_modules');
+		grunt.recursivelyLoadTasks('grunt-contrib-watch', '../node_modules');
+		grunt.recursivelyLoadTasks('grunt-contrib-clean', '../node_modules');
+		grunt.recursivelyLoadTasks('grunt-contrib-copy', '../node_modules');
+		grunt.recursivelyLoadTasks('grunt-contrib-less', '../node_modules');
+		grunt.recursivelyLoadTasks('grunt-text-replace', '../node_modules');
+		grunt.recursivelyLoadTasks('grunt-lintspaces', '../node_modules');
+		grunt.recursivelyLoadTasks('grunt-grunticon', '../node_modules');
+		grunt.recursivelyLoadTasks('grunt-prompt', '../node_modules');
+		grunt.recursivelyLoadTasks('grunt-wakeup', '../node_modules');
+		grunt.recursivelyLoadTasks('grunt-font', '../node_modules');
+		require('../node_modules/time-grunt')(grunt);
+	}
+	catch(e) { //well it looks like no parent, now fall back to local node_modules
+		grunt.loadNpmTasks('grunt-contrib-imagemin');
+		grunt.loadNpmTasks('grunt-contrib-connect');
+		grunt.loadNpmTasks('grunt-contrib-uglify');
+		grunt.loadNpmTasks('grunt-contrib-concat');
+		grunt.loadNpmTasks('grunt-contrib-watch');
+		grunt.loadNpmTasks('grunt-contrib-clean');
+		grunt.loadNpmTasks('grunt-contrib-copy');
+		grunt.loadNpmTasks('grunt-contrib-less');
+		grunt.loadNpmTasks('grunt-text-replace');
+		grunt.loadNpmTasks('grunt-lintspaces');
+		grunt.loadNpmTasks('grunt-grunticon');
+		grunt.loadNpmTasks('grunt-prompt');
+		grunt.loadNpmTasks('grunt-wakeup');
+		grunt.loadNpmTasks('grunt-font');
+		require('time-grunt')(grunt);
+	}
 
 
 	//------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -632,6 +655,7 @@ module.exports = function(grunt) {
 	]);
 
 	grunt.registerTask('_ubergrunt', [
+		'clean',
 		'buildVersions',
 	]);
 
