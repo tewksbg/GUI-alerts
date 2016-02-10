@@ -54,15 +54,19 @@ var SETTINGS = function() {
 		'colors': {
 			'BOM': {
 				'Color-Text': '#20262d',
+				'Color-Muted': '#69727E',
 			},
 			'BSA': {
 				'Color-Text': '#333',
+				'Color-Muted': '#707070',
 			},
 			'STG': {
 				'Color-Text': '#004833',
+				'Color-Muted': '#757463',
 			},
 			'WBC': {
 				'Color-Text': '#2d373e',
+				'Color-Muted': '#575F65',
 			},
 		},
 	};
@@ -231,6 +235,7 @@ module.exports = function(grunt) {
 		var imagemin = {};
 		var grunticon = {};
 		var clean = {};
+		var tasks = [];
 		var brands = ['BOM', 'BSA', 'STG', 'WBC'];
 
 		var module = grunt.file.readJSON( 'module.json' );
@@ -257,6 +262,7 @@ module.exports = function(grunt) {
 					}
 				}],
 			};
+			tasks.push( 'uglify:uglify' + brand );
 
 
 			//////////////////////////////////////| CONCAT FILES
@@ -267,6 +273,7 @@ module.exports = function(grunt) {
 				src: srcFiles,
 				dest: 'tests/' + brand + '/assets/js/gui.js',
 			};
+			tasks.push( 'concat:JS' + brand );
 
 			var srcFiles = ['_core/less/core.less']; //less
 			srcFiles.push('less/module-mixins.less');
@@ -276,6 +283,7 @@ module.exports = function(grunt) {
 				src: srcFiles,
 				dest: 'tests/' + brand + '/assets/less/gui.less',
 			};
+			tasks.push( 'concat:Less' + brand );
 
 			if( module.core === true ) { //if this is a core module
 				if( module.ID === '_colors' ) {
@@ -296,6 +304,7 @@ module.exports = function(grunt) {
 				src: srcFiles,
 				dest: 'tests/' + brand + '/assets/less/coreSize.less',
 			};
+			tasks.push( 'concat:coreSize' + brand );
 
 			concat[ 'HTML' + brand ] = { //html
 				src: [
@@ -305,6 +314,7 @@ module.exports = function(grunt) {
 				],
 				dest: 'tests/' + brand + '/index.html',
 			};
+			tasks.push( 'concat:HTML' + brand );
 
 
 			//////////////////////////////////////| ADD VERSIONING TO FILES
@@ -329,6 +339,7 @@ module.exports = function(grunt) {
 					to: 'true',
 				}],
 			};
+			tasks.push( 'replace:Replace' + brand );
 
 			replace[ 'ReplaceTest' + brand ] = { //brand test files
 				src: [
@@ -350,6 +361,7 @@ module.exports = function(grunt) {
 					to: 'true',
 				}],
 			};
+			tasks.push( 'replace:ReplaceTest' + brand );
 
 			replace[ 'ReplaceSize' + brand ] = { //brand size files
 				src: [
@@ -370,6 +382,7 @@ module.exports = function(grunt) {
 					to: 'true',
 				}],
 			};
+			tasks.push( 'replace:ReplaceSize' + brand );
 
 
 			//////////////////////////////////////| COMPILE LESS
@@ -386,6 +399,7 @@ module.exports = function(grunt) {
 				],
 				dest: 'tests/' + brand + '/assets/css/gui.css',
 			};
+			tasks.push( 'less:Less' + brand );
 
 			less[ 'LessSize' + brand ] = { //minified css for size calculation
 				options: {
@@ -400,6 +414,7 @@ module.exports = function(grunt) {
 				],
 				dest: 'tests/' + brand + '/assets/size/size.css',
 			};
+			tasks.push( 'less:LessSize' + brand );
 
 			less[ 'CoreSize' + brand ] = { //minified core css for size calculation
 				options: {
@@ -414,6 +429,7 @@ module.exports = function(grunt) {
 				],
 				dest: 'tests/' + brand + '/assets/size/coreSize.css',
 			};
+			tasks.push( 'less:CoreSize' + brand );
 
 			less[ 'LessTest' + brand ] = {
 				options: {
@@ -428,12 +444,14 @@ module.exports = function(grunt) {
 				],
 				dest: 'tests/' + brand + '/assets/css/test.css',
 			};
+			tasks.push( 'less:LessTest' + brand );
 
 
 			//////////////////////////////////////| CLEAN SIZE FOLDER
 			clean[ 'cleanSize' + brand ] = [
 				'tests/' + brand + '/assets/size/sizeTemp.js',
 			];
+			tasks.push( 'clean:cleanSize' + brand );
 
 
 			//////////////////////////////////////| COPY FONT ASSETS
@@ -443,6 +461,7 @@ module.exports = function(grunt) {
 				src: '*',
 				dest: 'tests/' + brand + '/assets/font',
 			};
+			tasks.push( 'copy:CoreFont' + brand );
 
 			copy[ 'Font' + brand ] = {
 				expand: true,
@@ -450,6 +469,7 @@ module.exports = function(grunt) {
 				src: '*',
 				dest: 'tests/' + brand + '/assets/font',
 			};
+			tasks.push( 'copy:Font' + brand );
 
 
 			//////////////////////////////////////| OPTIMISE IMAGES
@@ -464,19 +484,21 @@ module.exports = function(grunt) {
 					dest: 'tests/' + brand + '/assets/img/',
 				}],
 			};
+			tasks.push( 'imagemin:Images' + brand );
 
 
-			//////////////////////////////////////| BRAND SVGS
+			//////////////////////////////////////| BRAND SVGS FOR IE8 FALLBACK
 			replace[ 'ReplaceSVG' + brand ] = {
 				src: [
 					'_assets/_svgs/*.svg',
 				],
 				dest: 'tests/' + brand + '/assets/svg/',
 				replacements: [{
-					from: '[Color-Text]',
+					from: '[Color-Muted]',
 					to: SETTINGS().colors[brand]['Color-Text'],
 				}],
 			};
+			tasks.push( 'replace:ReplaceSVG' + brand );
 
 
 			//////////////////////////////////////| COMPILE SVGS
@@ -498,21 +520,44 @@ module.exports = function(grunt) {
 					customselectors: svgselectors,
 				},
 			};
+			tasks.push( 'grunticon:SVG' + brand );
 
 
-			//////////////////////////////////////| COPY FALLBACK SVGS
+			//////////////////////////////////////| COPY FALLBACK PNGS
 			copy[ 'SVG' + brand ] = {
 				expand: true,
 				cwd: 'tests/' + brand + '/assets/css/png',
 				src: '*.png',
 				dest: 'tests/' + brand + '/assets/img',
 			};
+			tasks.push( 'copy:SVG' + brand );
 
+
+			//////////////////////////////////////| BRAND SVGS FOR REALZ NOW!
+			replace[ 'ReplaceSVGAgain' + brand ] = {
+				src: [
+					'_assets/_svgs/*.svg',
+				],
+				dest: 'tests/' + brand + '/assets/svg/',
+				replacements: [{
+					from: '[Color-Muted]',
+					to: SETTINGS().colors[brand]['Color-Muted'],
+				}],
+			};
+			tasks.push( 'replace:ReplaceSVGAgain' + brand );
+
+
+			//////////////////////////////////////| COMPILE SVGS AGAIN
+			tasks.push( 'grunticon:SVG' + brand );
+
+
+			//////////////////////////////////////| CLEANING UP
 			clean[ 'SVG' + brand ] = [
 				'tests/' + brand + '/assets/css/preview.html',
 				'tests/' + brand + '/assets/css/grunticon.loader.js',
 				'tests/' + brand + '/assets/css/png/',
 			];
+			tasks.push( 'clean:SVG' + brand );
 		});
 
 
@@ -525,30 +570,20 @@ module.exports = function(grunt) {
 		};
 
 
-		//running tasks
+		//assigning tasks
 		grunt.config.set('uglify', uglify);
-		grunt.task.run('uglify');
-
 		grunt.config.set('concat', concat);
-		grunt.task.run('concat');
-
 		grunt.config.set('replace', replace);
-		grunt.task.run('replace');
-
 		grunt.config.set('less', less);
-		grunt.task.run('less');
-
 		grunt.config.set('imagemin', imagemin);
-		grunt.task.run('imagemin');
-
 		grunt.config.set('grunticon', grunticon);
-		grunt.task.run('grunticon');
-
 		grunt.config.set('copy', copy);
-		grunt.task.run('copy');
-
 		grunt.config.set('clean', clean);
-		grunt.task.run('clean');
+
+		//running tasks in order
+		tasks.forEach(function iterateTasks( task ) {
+			grunt.task.run( task );
+		});
 
 		grunt.task.run('calculateSize');
 		grunt.task.run('createChecksum');
