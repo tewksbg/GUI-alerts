@@ -220,33 +220,6 @@ module.exports = function(grunt) {
 
 	});
 
-	//------------------------------------------------------------------------------------------------------------------------------------------------------------
-	// Custom grunt task to build all SVG titles
-	//------------------------------------------------------------------------------------------------------------------------------------------------------------
-	grunt.registerTask('buildSVGs', 'Build SVG titles.', function() {
-
-		var replace = {};
-
-		grunt.file.expand({ filter: 'isFile' }, [
-				'tests/**/svg/*.svg',
-			]).forEach(function( file ) {
-				var filename = Path.basename( file, '.svg' )
-
-				replace[ 'ReplaceSVG-' + file ] = {
-					src: [ file ],
-					overwrite: true,
-					replacements: [{
-						from: '[Filename]',
-						to: '-' + filename,
-					}],
-				};
-		});
-
-		//run tasks
-		grunt.config.set('replace', replace);
-		grunt.task.run('replace');
-	});
-
 
 	//------------------------------------------------------------------------------------------------------------------------------------------------------------
 	// Custom grunt task to build all files in each brand
@@ -591,21 +564,27 @@ module.exports = function(grunt) {
 
 
 			//////////////////////////////////////| ADD UNIQUE TITLES TO SVGS
-			grunt.file.expand({ filter: 'isFile' }, [
-					'_assets/_svgs/*.svg',
-				]).forEach(function( file ) {
-					var filename = Path.basename( file, '.svg' )
+			try {
+				Fs.statSync( '_assets/_svgs/' );
+				SVGfiles = '_assets/_svgs/*.svg';
+			}
+			catch(error) {
+				var SVGfiles = 'tests/' + brand + '/assets/svg/*.svg';
+			}
 
-					replace[ 'ReplaceSVG-' + brand + '-' + filename ] = {
-						src: [ 'tests/' + brand + '/assets/svg/' + filename + '.svg' ],
-						overwrite: true,
-						replacements: [{
-							from: '[Filename]',
-							to: '-' + filename,
-						}],
-					};
+			grunt.file.expand({ filter: 'isFile' }, SVGfiles).forEach(function( file ) {
+				var filename = Path.basename( file, '.svg' )
 
-					tasks.add( 'replace:ReplaceSVG-' + brand + '-' + filename );
+				replace[ 'ReplaceSVG-' + brand + '-' + filename ] = {
+					src: [ 'tests/' + brand + '/assets/svg/' + filename + '.svg' ],
+					overwrite: true,
+					replacements: [{
+						from: '[Filename]',
+						to: '-' + filename,
+					}],
+				};
+
+				tasks.add( 'replace:ReplaceSVG-' + brand + '-' + filename );
 			});
 
 
@@ -704,6 +683,37 @@ module.exports = function(grunt) {
 
 
 		//----------------------------------------------------------------------------------------------------------------------------------------------------------
+		// Copy symbole files
+		//----------------------------------------------------------------------------------------------------------------------------------------------------------
+		copy: {
+			'SVGfilesBOM': {
+				expand: true,
+				cwd: '_assets/BOM/svg',
+				src: '*.svg',
+				dest: 'tests/BOM/assets/svg',
+			},
+			'SVGfilesBSA': {
+				expand: true,
+				cwd: '_assets/BSA/svg',
+				src: '*.svg',
+				dest: 'tests/BSA/assets/svg',
+			},
+			'SVGfilesSTG': {
+				expand: true,
+				cwd: '_assets/STG/svg',
+				src: '*.svg',
+				dest: 'tests/STG/assets/svg',
+			},
+			'SVGfilesWBC': {
+				expand: true,
+				cwd: '_assets/WBC/svg',
+				src: '*.svg',
+				dest: 'tests/WBC/assets/svg',
+			},
+		},
+
+
+		//----------------------------------------------------------------------------------------------------------------------------------------------------------
 		// Cleaning test folder
 		//----------------------------------------------------------------------------------------------------------------------------------------------------------
 		clean: {
@@ -787,12 +797,14 @@ module.exports = function(grunt) {
 	grunt.registerTask('_build', [
 		// 'lintspaces',
 		'clean',
+		'copy',
 		'buildVersions',
 		'wakeup',
 	]);
 
 	grunt.registerTask('_ubergrunt', [
 		'clean',
+		'copy',
 		'buildVersions',
 	]);
 
