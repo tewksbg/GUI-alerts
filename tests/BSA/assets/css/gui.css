@@ -1,16 +1,16 @@
-/*! _colors v1.0.1 */
+/*! _colors v2.0.0 */
 .written-by {
   content: 'Dominik Wilkowski, Justin Spencer, Kate T MacDonald';
   color: #BADA55;
 }
-/*! _fonts v1.0.2 */
+/*! _fonts v0.0.0 */
 .body-font {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 }
 .brand-font {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 }
-/*! _grid v1.0.0 */
+/*! _grid v2.0.0 */
 .clearfix:before,
 .clearfix:after,
 .container-fluid:before,
@@ -1021,7 +1021,7 @@
     padding-left: 24px;
   }
 }
-/*! _text-styling v1.0.3 */
+/*! _text-styling v2.0.0 */
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 /**
 	 * 1. Set default font family to sans-serif.
@@ -1486,6 +1486,15 @@ blockquote {
   font-size: 16px;
   font-weight: 300;
 }
+mark {
+  background-color: #f2d0d5;
+}
+dl dt {
+  font-weight: 700;
+}
+dl dd {
+  margin: 0;
+}
 ::-moz-selection {
   background-color: #f2d0d5;
 }
@@ -1585,11 +1594,9 @@ a:hover {
     width: auto;
   }
 }
-/*!alerts v1.0.4 BSA*/
+/*!alerts v2.0.0 BSA*/
 /*
  * alerts mixins
- *
- * Callout moduls, lable addons and form validation colors
  *
  */
 /*

@@ -473,15 +473,15 @@ module.exports = function(grunt) {
 			//////////////////////////////////////| COPY FONT ASSETS
 			copy[ 'CoreFont' + brand ] = {
 				expand: true,
-				cwd: '_core/font/' + brand + '/*.*',
-				src: '*',
+				cwd: '_core/font/' + brand + '/',
+				src: '**.*',
 				dest: 'tests/' + brand + '/assets/font',
 			};
 			tasks.add( 'copy:CoreFont' + brand );
 
 			copy[ 'Font' + brand ] = {
 				expand: true,
-				cwd: '_assets/' + brand + '/font',
+				cwd: '_assets/' + brand + '/font/',
 				src: '*',
 				dest: 'tests/' + brand + '/assets/font',
 			};
