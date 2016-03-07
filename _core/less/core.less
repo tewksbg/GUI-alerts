@@ -1,4 +1,6 @@
-/*! _colors v1.0.1 */
+/*! _colors v2.0.0 */
+
+@brand: [Brand];
 
 
 //////////////////////////////////////| COLORS MIXIN
@@ -238,9 +240,11 @@
 
 
 //////////////////////////////////////| COLORS
-._colors([Brand]);
+._colors( @brand );
 
-/*! _fonts v1.0.2 */
+/*! _fonts v0.0.0 */
+
+@brand: [Brand];
 
 
 //////////////////////////////////////| FONTS MIXIN
@@ -326,9 +330,11 @@
 
 
 //////////////////////////////////////| FONTS
-._fonts([Brand]);
+._fonts( @brand );
 
-/*! _grid v1.0.0 */
+/*! _grid v2.0.0 */
+
+@brand: [Brand];
 
 
 //////////////////////////////////////| GRID MIXIN
@@ -379,16 +385,18 @@
 
 
 //////////////////////////////////////| GRID
-._grid([Brand]);
+._grid( @brand );
 
-/*! _text-styling v1.0.3 */
+/*! _text-styling v2.0.0 */
+
+@brand: [Brand];
 
 
 //////////////////////////////////////| TEXT STYLING MIXIN
 ._text-styling( @brand ) {
 
 	._text-styling-normalizer();
-	._text-styling-headings( [Brand] );
+	._text-styling-headings( @brand );
 
 
 	//////////////////////////////////////| HTML STYLES
@@ -418,6 +426,20 @@
 		font-weight: 300;
 	}
 
+	mark {
+		background-color: @color-A-20;
+	}
+
+	dl {
+		dt {
+			font-weight: 700;
+		}
+
+		dd {
+			margin: 0;
+		}
+	}
+
 	::selection {
 		background-color: @color-A-20;
 	}
@@ -433,15 +455,6 @@
 	::-moz-selection {
 		background-color: @color-A-20;
 	}
-
-	// dl {
-	// 	dt {
-	// 		font-weight: 700;
-	// 	}
-	// 	dd {
-	// 		margin: 0;
-	// 	}
-	// }
 
 
 	//////////////////////////////////////| LINKS
@@ -1411,4 +1424,4 @@
 
 
 //////////////////////////////////////| TEXT STYLING
-._text-styling([Brand]);
+._text-styling( @brand );
