@@ -1,4 +1,6 @@
-/*! _colors v1.0.1 */
+/*! _colors v2.0.0 */
+
+@brand: WBC;
 
 
 //////////////////////////////////////| COLORS MIXIN
@@ -238,9 +240,11 @@
 
 
 //////////////////////////////////////| COLORS
-._colors(WBC);
+._colors( @brand );
 
-/*! _fonts v1.0.2 */
+/*! _fonts v0.0.0 */
+
+@brand: WBC;
 
 
 //////////////////////////////////////| FONTS MIXIN
@@ -326,9 +330,11 @@
 
 
 //////////////////////////////////////| FONTS
-._fonts(WBC);
+._fonts( @brand );
 
-/*! _grid v1.0.0 */
+/*! _grid v2.0.0 */
+
+@brand: WBC;
 
 
 //////////////////////////////////////| GRID MIXIN
@@ -379,16 +385,18 @@
 
 
 //////////////////////////////////////| GRID
-._grid(WBC);
+._grid( @brand );
 
-/*! _text-styling v1.0.3 */
+/*! _text-styling v2.0.0 */
+
+@brand: WBC;
 
 
 //////////////////////////////////////| TEXT STYLING MIXIN
 ._text-styling( @brand ) {
 
 	._text-styling-normalizer();
-	._text-styling-headings( WBC );
+	._text-styling-headings( @brand );
 
 
 	//////////////////////////////////////| HTML STYLES
@@ -418,6 +426,20 @@
 		font-weight: 300;
 	}
 
+	mark {
+		background-color: @color-A-20;
+	}
+
+	dl {
+		dt {
+			font-weight: 700;
+		}
+
+		dd {
+			margin: 0;
+		}
+	}
+
 	::selection {
 		background-color: @color-A-20;
 	}
@@ -433,15 +455,6 @@
 	::-moz-selection {
 		background-color: @color-A-20;
 	}
-
-	// dl {
-	// 	dt {
-	// 		font-weight: 700;
-	// 	}
-	// 	dd {
-	// 		margin: 0;
-	// 	}
-	// }
 
 
 	//////////////////////////////////////| LINKS
@@ -1411,14 +1424,14 @@
 
 
 //////////////////////////////////////| TEXT STYLING
-._text-styling(WBC);
-/*!alerts v1.0.4 WBC*/
+._text-styling( @brand );
+/*!alerts v2.0.0 WBC*/
 /*
  * alerts mixins
  *
- * Callout moduls, lable addons and form validation colors
- *
  */
+
+@brand: WBC;
 
 
 //////////////////////////////////////| alerts mixin
@@ -1861,4 +1874,4 @@
 
 
 //////////////////////////////////////| alerts
-._alerts( WBC );
+._alerts( @brand );

@@ -1,4 +1,6 @@
-/*! _colors v1.0.1 */
+/*! _colors v2.0.0 */
+
+@brand: BSA;
 
 
 //////////////////////////////////////| COLORS MIXIN
@@ -238,9 +240,11 @@
 
 
 //////////////////////////////////////| COLORS
-._colors(BSA);
+._colors( @brand );
 
-/*! _fonts v1.0.2 */
+/*! _fonts v0.0.0 */
+
+@brand: BSA;
 
 
 //////////////////////////////////////| FONTS MIXIN
@@ -326,9 +330,11 @@
 
 
 //////////////////////////////////////| FONTS
-._fonts(BSA);
+._fonts( @brand );
 
-/*! _grid v1.0.0 */
+/*! _grid v2.0.0 */
+
+@brand: BSA;
 
 
 //////////////////////////////////////| GRID MIXIN
@@ -379,16 +385,18 @@
 
 
 //////////////////////////////////////| GRID
-._grid(BSA);
+._grid( @brand );
 
-/*! _text-styling v1.0.3 */
+/*! _text-styling v2.0.0 */
+
+@brand: BSA;
 
 
 //////////////////////////////////////| TEXT STYLING MIXIN
 ._text-styling( @brand ) {
 
 	._text-styling-normalizer();
-	._text-styling-headings( BSA );
+	._text-styling-headings( @brand );
 
 
 	//////////////////////////////////////| HTML STYLES
@@ -418,6 +426,20 @@
 		font-weight: 300;
 	}
 
+	mark {
+		background-color: @color-A-20;
+	}
+
+	dl {
+		dt {
+			font-weight: 700;
+		}
+
+		dd {
+			margin: 0;
+		}
+	}
+
 	::selection {
 		background-color: @color-A-20;
 	}
@@ -433,15 +455,6 @@
 	::-moz-selection {
 		background-color: @color-A-20;
 	}
-
-	// dl {
-	// 	dt {
-	// 		font-weight: 700;
-	// 	}
-	// 	dd {
-	// 		margin: 0;
-	// 	}
-	// }
 
 
 	//////////////////////////////////////| LINKS
@@ -1411,14 +1424,14 @@
 
 
 //////////////////////////////////////| TEXT STYLING
-._text-styling(BSA);
-/*!alerts v1.0.4 BSA*/
+._text-styling( @brand );
+/*!alerts v2.0.0 BSA*/
 /*
  * alerts mixins
  *
- * Callout moduls, lable addons and form validation colors
- *
  */
+
+@brand: BSA;
 
 
 //////////////////////////////////////| alerts mixin
@@ -1861,4 +1874,4 @@
 
 
 //////////////////////////////////////| alerts
-._alerts( BSA );
+._alerts( @brand );
