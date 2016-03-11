@@ -47,29 +47,12 @@ function checksum(str, algorithm, encoding) {
 
 
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------
-// Seetings
+// GUI config
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------
-var SETTINGS = function() {
-	return {
-		'colors': {
-			'BOM': {
-				'Color-Text': '#20262d',
-				'Color-Muted': '#69727E',
-			},
-			'BSA': {
-				'Color-Text': '#333',
-				'Color-Muted': '#707070',
-			},
-			'STG': {
-				'Color-Text': '#004833',
-				'Color-Muted': '#757463',
-			},
-			'WBC': {
-				'Color-Text': '#2d373e',
-				'Color-Muted': '#575F65',
-			},
-		},
-	};
+var SETTINGS = function(grunt) {
+	var guiconfig = grunt.file.readJSON( '.guiconfig' );
+
+	return guiconfig;
 };
 
 
@@ -235,7 +218,7 @@ module.exports = function(grunt) {
 		var imagemin = {};
 		var grunticon = {};
 		var clean = {};
-		var brands = ['BOM', 'BSA', 'STG', 'WBC'];
+		// var brands = ['BOM', 'BSA', 'STG', 'WBC'];
 
 		var module = grunt.file.readJSON( 'module.json' );
 		var moduleName = module.ID;
@@ -264,7 +247,7 @@ module.exports = function(grunt) {
 
 
 		//create tasks for each brand
-		brands.forEach(function( brand ) {
+		SETTINGS(grunt).brands.forEach(function( brand ) {
 
 			//////////////////////////////////////| UGLIFY JS
 			uglify[ 'uglify' + brand ] = {
@@ -511,7 +494,7 @@ module.exports = function(grunt) {
 				dest: 'tests/' + brand + '/assets/svg/',
 				replacements: [{
 					from: '[Color-Muted]',
-					to: SETTINGS().colors[brand]['Color-Text'],
+					to: SETTINGS(grunt).colors[brand]['Color-Text'],
 				}],
 			};
 			tasks.add( 'replace:ReplaceSVG' + brand );
@@ -557,7 +540,7 @@ module.exports = function(grunt) {
 				dest: 'tests/' + brand + '/assets/svg/',
 				replacements: [{
 					from: '[Color-Muted]',
-					to: SETTINGS().colors[brand]['Color-Muted'],
+					to: SETTINGS(grunt).colors[brand]['Color-Muted'],
 				}],
 			};
 			tasks.add( 'replace:ReplaceSVGAgain' + brand );
@@ -638,6 +621,30 @@ module.exports = function(grunt) {
 
 
 	//------------------------------------------------------------------------------------------------------------------------------------------------------------
+	// Custom grunt task to copy symbole files
+	//------------------------------------------------------------------------------------------------------------------------------------------------------------
+	grunt.registerTask('copySymbole', 'Build this module.', function() {
+
+		var copy = {};
+
+		//create tasks for each brand
+		SETTINGS(grunt).brands.forEach(function( brand ) {
+
+			copy[ 'SVGfiles' + brand ] = {
+				expand: true,
+				cwd: '_assets/' + brand + '/svg',
+				src: '*.svg',
+				dest: 'tests/' + brand + '/assets/svg',
+			};
+
+		});
+
+		grunt.config.set('copy', copy);
+		grunt.task.run('copy');
+	});
+
+
+	//------------------------------------------------------------------------------------------------------------------------------------------------------------
 	// Grunt tasks
 	//------------------------------------------------------------------------------------------------------------------------------------------------------------
 	grunt.initConfig({
@@ -678,37 +685,6 @@ module.exports = function(grunt) {
 					'!**/*.svg',
 					'!Gruntfile.js',
 				],
-			},
-		},
-
-
-		//----------------------------------------------------------------------------------------------------------------------------------------------------------
-		// Copy symbole files
-		//----------------------------------------------------------------------------------------------------------------------------------------------------------
-		copy: {
-			'SVGfilesBOM': {
-				expand: true,
-				cwd: '_assets/BOM/svg',
-				src: '*.svg',
-				dest: 'tests/BOM/assets/svg',
-			},
-			'SVGfilesBSA': {
-				expand: true,
-				cwd: '_assets/BSA/svg',
-				src: '*.svg',
-				dest: 'tests/BSA/assets/svg',
-			},
-			'SVGfilesSTG': {
-				expand: true,
-				cwd: '_assets/STG/svg',
-				src: '*.svg',
-				dest: 'tests/STG/assets/svg',
-			},
-			'SVGfilesWBC': {
-				expand: true,
-				cwd: '_assets/WBC/svg',
-				src: '*.svg',
-				dest: 'tests/WBC/assets/svg',
 			},
 		},
 
@@ -797,14 +773,14 @@ module.exports = function(grunt) {
 	grunt.registerTask('_build', [
 		// 'lintspaces',
 		'clean',
-		'copy',
+		'copySymbole',
 		'buildVersions',
 		'wakeup',
 	]);
 
 	grunt.registerTask('_ubergrunt', [
 		'clean',
-		'copy',
+		'copySymbole',
 		'buildVersions',
 	]);
 
