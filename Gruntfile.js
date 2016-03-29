@@ -493,7 +493,7 @@ module.exports = function(grunt) {
 				],
 				dest: 'tests/' + brand + '/assets/svg/',
 				replacements: [{
-					from: '[Color-Muted]',
+					from: '[svg-color]',
 					to: SETTINGS(grunt).colors[brand]['Color-Text'],
 				}],
 			};
@@ -539,8 +539,23 @@ module.exports = function(grunt) {
 				],
 				dest: 'tests/' + brand + '/assets/svg/',
 				replacements: [{
-					from: '[Color-Muted]',
+					from: '[svg-color]',
 					to: SETTINGS(grunt).colors[brand]['Color-Muted'],
+				}, {
+					from: '[lists-link]',
+					to: SETTINGS(grunt).colors[brand]['lists-link'],
+				}, {
+					from: '[lists-tick]',
+					to: SETTINGS(grunt).colors[brand]['lists-tick'],
+				}, {
+					from: '[radcheck-active]',
+					to: SETTINGS(grunt).colors[brand]['radcheck-active'],
+				}, {
+					from: '[radcheck-disbaled-bg]',
+					to: SETTINGS(grunt).colors[brand]['radcheck-disbaled-bg'],
+				}, {
+					from: '[radcheck-disbaled-border]',
+					to: SETTINGS(grunt).colors[brand]['radcheck-disbaled-border'],
 				}],
 			};
 			tasks.add( 'replace:ReplaceSVGAgain' + brand );
