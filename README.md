@@ -6,8 +6,8 @@ GUI Alerts
 [BSA](http://westpaccxteam.github.io/GUI-alerts/tests/BSA/) |
 [STG](http://westpaccxteam.github.io/GUI-alerts/tests/STG/) |
 [WBC](http://westpaccxteam.github.io/GUI-alerts/tests/WBC/) |
-[STG](http://westpaccxteam.github.io/GUI-alerts/tests/WBG/) |
-[WBC](http://westpaccxteam.github.io/GUI-alerts/tests/BT/)
+[WBG](http://westpaccxteam.github.io/GUI-alerts/tests/WBG/) |
+[BT](http://westpaccxteam.github.io/GUI-alerts/tests/BT/)
 
 > User feedback and messaging is essential in UI design. Using a cross-brand palette of reserved, contextual colours provides a flexible, consistent message
 > system for common user interactions.

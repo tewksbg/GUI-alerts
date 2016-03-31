@@ -17,7 +17,7 @@
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 }
 .brand-font {
-  font-family: "Times New Roman", "Times", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-family: Georgia, "Times New Roman", "Times", serif;
 }
 /*! _grid v2.0.0 */
 .clearfix:before,
@@ -1396,11 +1396,11 @@ textarea {
 .h1,
 h1 {
   font-size: 30px;
-  color: rebeccapurple;
-  font-family: "Times New Roman", "Times", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  color: #333;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   margin-top: 18px;
   margin-bottom: 18px;
-  font-weight: 700;
+  font-weight: 300;
 }
 @media (min-width: 768px) {
   .h1,
@@ -1408,18 +1408,14 @@ h1 {
     font-size: 36px;
   }
 }
-.h1.body-font,
-h1.body-font {
-  font-weight: 300;
-}
 .h2,
 h2 {
   font-size: 24px;
-  color: rebeccapurple;
-  font-family: "Times New Roman", "Times", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  color: #333;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   margin-top: 18px;
   margin-bottom: 12px;
-  font-weight: 700;
+  font-weight: 300;
 }
 @media (min-width: 768px) {
   .h2,
@@ -1427,18 +1423,14 @@ h2 {
     font-size: 30px;
   }
 }
-.h2.body-font,
-h2.body-font {
-  font-weight: 300;
-}
 .h3,
 h3 {
   font-size: 18px;
-  color: rebeccapurple;
-  font-family: "Times New Roman", "Times", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  color: #333;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   margin-top: 18px;
   margin-bottom: 12px;
-  font-weight: 700;
+  font-weight: 300;
 }
 @media (min-width: 768px) {
   .h3,
@@ -1446,18 +1438,14 @@ h3 {
     font-size: 24px;
   }
 }
-.h3.body-font,
-h3.body-font {
-  font-weight: 300;
-}
 .h4,
 h4 {
   font-size: 16px;
-  color: rebeccapurple;
-  font-family: "Times New Roman", "Times", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  color: #333;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   margin-top: 18px;
   margin-bottom: 12px;
-  font-weight: 700;
+  font-weight: 400;
 }
 @media (min-width: 768px) {
   .h4,
@@ -1465,34 +1453,22 @@ h4 {
     font-size: 18px;
   }
 }
-.h4.body-font,
-h4.body-font {
-  font-weight: 400;
-}
 .h5,
 h5 {
   font-size: 16px;
-  color: rebeccapurple;
+  color: #333;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   margin-top: 12px;
   margin-bottom: 6px;
   font-weight: 500;
 }
-.h5.body-font,
-h5.body-font {
-  font-weight: 500;
-}
 .h6,
 h6 {
   font-size: 14px;
-  color: rebeccapurple;
+  color: #333;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   margin-top: 12px;
   margin-bottom: 0px;
-  font-weight: 700;
-}
-.h6.body-font,
-h6.body-font {
   font-weight: 700;
 }
 h1,
@@ -1503,19 +1479,100 @@ h5,
 h6 {
   line-height: 1.1;
 }
+/*
+	 *  SETTINGS
+	 */
+.h1,
+h1 {
+  font-size: 30px;
+  color: #333;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  margin-top: 18px;
+  margin-bottom: 18px;
+  font-weight: 300;
+}
+@media (min-width: 768px) {
+  .h1,
+  h1 {
+    font-size: 36px;
+  }
+}
+.h2,
+h2 {
+  font-size: 24px;
+  color: #333;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  margin-top: 18px;
+  margin-bottom: 12px;
+  font-weight: 300;
+}
+@media (min-width: 768px) {
+  .h2,
+  h2 {
+    font-size: 30px;
+  }
+}
+.h3,
+h3 {
+  font-size: 18px;
+  color: #333;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  margin-top: 18px;
+  margin-bottom: 12px;
+  font-weight: 300;
+}
+@media (min-width: 768px) {
+  .h3,
+  h3 {
+    font-size: 24px;
+  }
+}
+.h4,
+h4 {
+  font-size: 16px;
+  color: #333;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  margin-top: 18px;
+  margin-bottom: 12px;
+  font-weight: 400;
+}
+@media (min-width: 768px) {
+  .h4,
+  h4 {
+    font-size: 18px;
+  }
+}
+.h5,
+h5 {
+  font-size: 16px;
+  color: #333;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  margin-top: 12px;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+.h6,
+h6 {
+  font-size: 14px;
+  color: #333;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  margin-top: 12px;
+  margin-bottom: 0px;
+  font-weight: 700;
+}
 html {
   font-size: 6px;
 }
 body {
   font-size: 14px;
   line-height: 1.428571429;
-  color: rebeccapurple;
-  background-color: rebeccapurple;
+  color: #333;
+  background-color: #f9f9f9;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 }
 abbr[title] {
   cursor: help;
-  border-bottom: 1px dotted rebeccapurple;
+  border-bottom: 1px dotted #333;
   text-decoration: none;
 }
 address {
@@ -1526,7 +1583,7 @@ blockquote {
   font-weight: 300;
 }
 mark {
-  background-color: #e0d6eb;
+  background-color: #cceff7;
 }
 dl dt {
   font-weight: 700;
@@ -1535,23 +1592,23 @@ dl dd {
   margin: 0;
 }
 ::-moz-selection {
-  background-color: #e0d6eb;
+  background-color: #cceff7;
 }
 ::selection {
-  background-color: #e0d6eb;
+  background-color: #cceff7;
 }
 a {
-  color: rebeccapurple;
+  color: #9e005d;
   text-decoration: none;
 }
 a:hover,
 a:focus {
-  color: rebeccapurple;
+  color: #9e005d;
   text-decoration: underline;
 }
 a:focus {
   outline: none;
-  color: rebeccapurple;
+  color: #9e005d;
 }
 .is-keyboarduser a:focus {
   outline: 2px dotted #000;
@@ -1660,8 +1717,8 @@ a:hover {
   position: relative;
   padding: 18px 36px 18px 18px;
   margin-bottom: 21px;
-  border-top: 1px solid rebeccapurple;
-  border-bottom: 1px solid rebeccapurple;
+  border-top: 1px solid #e0e0e0;
+  border-bottom: 1px solid #e0e0e0;
   overflow: hidden;
   z-index: 1;
   opacity: 1;
