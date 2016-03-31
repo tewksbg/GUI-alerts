@@ -54,13 +54,13 @@
 			"radcheck-disbaled-border": "#cfd8dc"
 		},
 		"BT": {
-			"Color-Text": "rebeccapurple",
-			"Color-Muted": "rebeccapurple",
-			"lists-link": "rebeccapurple",
-			"lists-tick": "rebeccapurple",
-			"radcheck-active": "rebeccapurple",
-			"radcheck-disbaled-bg": "rebeccapurple",
-			"radcheck-disbaled-border": "rebeccapurple"
+			"Color-Text": "#333",
+			"Color-Muted": "#666",
+			"lists-link": "#9e005d",
+			"lists-tick": "#2574a9",
+			"radcheck-active": "#2574a9",
+			"radcheck-disbaled-bg": "#fcfcfc",
+			"radcheck-disbaled-border": "#e0e0e0"
 		}
 	}
 }

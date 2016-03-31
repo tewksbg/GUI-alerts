@@ -70,16 +70,16 @@
 		@color-J: #f9fafb;
 	}
 	.getBrand() when (@brand = BT) {
-		@color-A: rebeccapurple;
-		@color-B: rebeccapurple;
-		@color-C: rebeccapurple;
-		@color-D: rebeccapurple;
-		@color-E: rebeccapurple;
-		@color-F: rebeccapurple;
-		@color-G: rebeccapurple;
-		@color-H: rebeccapurple;
-		@color-I: rebeccapurple;
-		@color-J: rebeccapurple;
+		@color-A: #9e005d;
+		@color-B: #2574a9;
+		@color-C: #637b98;
+		@color-D: #00afd7;
+		@color-E: #00232b;
+		@color-F: #333;
+		@color-G: #666;
+		@color-H: #e0e0e0;
+		@color-I: #f9f9f9;
+		@color-J: #fcfcfc;
 	}
 	.getBrand();
 
@@ -364,7 +364,7 @@
 	}
 	.getBrand() when (@brand = BT) {
 		@fontfamily: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-		@brand-fontfamily: "Times New Roman", "Times", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+		@brand-fontfamily: Georgia, "Times New Roman", "Times", serif;
 	}
 	.getBrand();
 }
@@ -439,6 +439,29 @@
 	._text-styling-normalizer();
 	._text-styling-headings( @brand );
 
+	/*
+	 *  SETTINGS
+	 */
+	.getBrand() when (@brand = BOM) {
+		@selection: @color-A-20;
+	}
+	.getBrand() when (@brand = BSA) {
+		@selection: @color-A-20;
+	}
+	.getBrand() when (@brand = STG) {
+		@selection: @color-A-20;
+	}
+	.getBrand() when (@brand = WBC) {
+		@selection: @color-A-20;
+	}
+	.getBrand() when (@brand = WBG) {
+		@selection: @color-A-20;
+	}
+	.getBrand() when (@brand = BT) {
+		@selection: @color-D-20;
+	}
+	.getBrand();
+
 
 	//////////////////////////////////////| HTML STYLES
 	html {
@@ -469,7 +492,7 @@
 	}
 
 	mark {
-		background-color: @color-A-20;
+		background-color: @selection;
 	}
 
 	dl {
@@ -483,11 +506,11 @@
 	}
 
 	::-moz-selection {
-		background-color: @color-A-20;
+		background-color: @selection;
 	}
 
 	::selection {
-		background-color: @color-A-20;
+		background-color: @selection;
 	}
 
 
@@ -1093,96 +1116,72 @@
 		.h1,
 		h1 {
 			font-size: 30px;
-			color: @color-B;
-			font-family: @brand-fontfamily;
+			color: @color-Text;
+			font-family: @fontfamily;
 			margin-top: 18px;
 			margin-bottom: 18px;
-			font-weight: 700;
+			font-weight: 300;
 
 			@media (min-width: @screen-sm) {
 				font-size: 36px;
-			}
-
-			&.body-font {
-				font-weight: 300;
 			}
 		}
 		.h2,
 		h2 {
 			font-size: 24px;
-			color: @color-B;
-			font-family: @brand-fontfamily;
+			color: @color-Text;
+			font-family: @fontfamily;
 			margin-top: 18px;
 			margin-bottom: 12px;
-			font-weight: 700;
+			font-weight: 300;
 
 			@media (min-width: @screen-sm) {
 				font-size: 30px;
-			}
-
-			&.body-font {
-				font-weight: 300;
 			}
 		}
 		.h3,
 		h3 {
 			font-size: 18px;
-			color: @color-B;
-			font-family: @brand-fontfamily;
+			color: @color-Text;
+			font-family: @fontfamily;
 			margin-top: 18px;
 			margin-bottom: 12px;
-			font-weight: 700;
+			font-weight: 300;
 
 			@media (min-width: @screen-sm) {
 				font-size: 24px;
-			}
-
-			&.body-font {
-				font-weight: 300;
 			}
 		}
 		.h4,
 		h4 {
 			font-size: 16px;
-			color: @color-B;
-			font-family: @brand-fontfamily;
+			color: @color-Text;
+			font-family: @fontfamily;
 			margin-top: 18px;
 			margin-bottom: 12px;
-			font-weight: 700;
+			font-weight: 400;
 
 			@media (min-width: @screen-sm) {
 				font-size: 18px;
-			}
-
-			&.body-font {
-				font-weight: 400;
 			}
 		}
 		.h5,
 		h5 {
 			font-size: 16px;
-			color: @color-B;
+			color: @color-Text;
 			font-family: @fontfamily;
 			margin-top: 12px;
 			margin-bottom: 6px;
 			font-weight: 500;
-
-			&.body-font {
-				font-weight: 500;
-			}
 		}
 		.h6,
 		h6 {
 			font-size: 14px;
-			color: @color-B;
+			color: @color-Text;
 			font-family: @fontfamily;
 			margin-top: 12px;
 			margin-bottom: 0px;
 			font-weight: 700;
-
-			&.body-font {
-				font-weight: 700;
-			}
 		}
 	}
 	.getBrand();
@@ -1655,6 +1654,12 @@
 	}
 	.getBrand() when (@brand = WBC) {
 		// @test: 'WBC';
+	}
+	.getBrand() when (@brand = WBG) {
+		// @test: 'WBG';
+	}
+	.getBrand() when (@brand = BT) {
+		// @test: 'BT';
 	}
 	.getBrand();
 
