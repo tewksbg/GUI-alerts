@@ -1,11 +1,7 @@
-/*! _colors v2.0.1 */
+/*! _colors v2.0.2 */
 /*
 	 *  SETTINGS
 	 */
-.written-by {
-  content: 'Dominik Wilkowski, Justin Spencer, Kate T MacDonald, Marita Purins, Daphne Bourne';
-  color: #BADA55;
-}
 /*! _fonts v2.0.2 */
 /*
 	 *  SETTINGS
@@ -1448,13 +1444,13 @@ template {
 body {
   font-size: 0.875em;
   line-height: 1.428571429;
-  color: #20262d;
+  color: #1f252c;
   background-color: #f0f1f2;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 }
 abbr[title] {
   cursor: help;
-  border-bottom: 1px dotted #20262d;
+  border-bottom: 1px dotted #1f252c;
   text-decoration: none;
 }
 address {
