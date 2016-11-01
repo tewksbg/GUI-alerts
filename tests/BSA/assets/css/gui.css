@@ -1,11 +1,7 @@
-/*! _colors v2.0.1 */
+/*! _colors v2.0.2 */
 /*
 	 *  SETTINGS
 	 */
-.written-by {
-  content: 'Dominik Wilkowski, Justin Spencer, Kate T MacDonald, Marita Purins, Daphne Bourne';
-  color: #BADA55;
-}
 /*! _fonts v2.0.2 */
 /*
 	 *  SETTINGS
@@ -1441,7 +1437,7 @@ body {
   font-size: 0.875em;
   line-height: 1.428571429;
   color: #333;
-  background-color: #ebebeb;
+  background-color: #f0f1f1;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 }
 abbr[title] {
@@ -1457,7 +1453,7 @@ blockquote {
   font-weight: 300;
 }
 mark {
-  background-color: #f2d0d5;
+  background-color: #f7d1d5;
 }
 p {
   margin: 0.8571428572em 0;
@@ -1469,23 +1465,23 @@ dl dd {
   margin: 0;
 }
 ::-moz-selection {
-  background-color: #f2d0d5;
+  background-color: #f7d1d5;
 }
 ::selection {
-  background-color: #f2d0d5;
+  background-color: #f7d1d5;
 }
 a {
-  color: #c0142e;
+  color: #d81b2b;
   text-decoration: underline;
 }
 a:hover,
 a:focus {
-  color: #c0142e;
+  color: #d81b2b;
   text-decoration: underline;
 }
 a:focus {
   outline: none;
-  color: #c0142e;
+  color: #d81b2b;
 }
 .is-keyboarduser a:focus {
   outline: 2px dotted #000;
@@ -1594,8 +1590,8 @@ a:hover {
   position: relative;
   padding: 18px 36px 18px 18px;
   margin-bottom: 21px;
-  border-top: 1px solid #c2c2c2;
-  border-bottom: 1px solid #c2c2c2;
+  border-top: 1px solid #d3d4d5;
+  border-bottom: 1px solid #d3d4d5;
   overflow: hidden;
   z-index: 1;
   opacity: 1;
